@@ -1,0 +1,44 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "WorkAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "WorkAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "great_day",
+      "value": "Great day!"
+    },
+    {
+      "name": "smart_word",
+      "value": "SmartWord"
+    },
+    {
+      "name": "do_you_ready",
+      "value": "Do you ready to \\nother day\\'s quintet?"
+    },
+    {
+      "name": "no_continue",
+      "value": "No, Continue"
+    },
+    {
+      "name": "next_day",
+      "value": "Next Day"
+    }
+  ]
+}

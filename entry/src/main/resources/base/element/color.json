@@ -1,0 +1,14 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#FFFFFF"
+    }, {
+      "name": "enabled_day_background",
+      "value": "#cbdbff9d"
+    }, {
+      "name": "disabled_day_background",
+      "value": "#26FFFFFF"
+    }
+  ]
+}
