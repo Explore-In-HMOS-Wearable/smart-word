@@ -10,14 +10,14 @@ export class StorageManager {
 
   async getFromStorage(context: common.Context, url: string) {
     let name = url;
-    console.log(TAG, 'Name is ${name}');
+    console.info(TAG, 'Name is ${name}');
     try {
       storage = await preferences.getPreferences(context, `${name}`);
     } catch (err) {
       Error(`getStorage failed, code is ${err?.code}, message is ${err?.message}`);
     }
     if (storage) {
-      console.log(TAG, 'Create storage is ok.');
+      console.info(TAG, 'Create storage is ok.');
     }
   }
 
@@ -32,9 +32,9 @@ export class StorageManager {
     try {
       await storage.put(key, value);
       await storage.flush();
-      console.log(TAG, `put key ${key} && value ${value} success`);
+      console.info(TAG, `put key ${key} && value ${value} success`);
     } catch (err) {
-      console.log(TAG, 'put failed');
+      console.error(TAG, 'put failed');
     }
     return
   }
@@ -44,9 +44,9 @@ export class StorageManager {
     try {
       await storage.put(key, value);
       await storage.flush();
-      console.log(TAG, `put key ${key} && value ${value} success`);
+      console.info(TAG, `put key ${key} && value ${value} success`);
     } catch (err) {
-      console.log(TAG, 'put failed');
+      console.error(TAG, 'put failed');
     }
     return
   }
@@ -57,9 +57,9 @@ export class StorageManager {
     try {
       result = await storage.has(key);
     } catch (err) {
-      console.log(`hasStorageValue failed, code is ${err?.code}, message is ${err?.message}`);
+      console.error(`hasStorageValue failed, code is ${err?.code}, message is ${err?.message}`);
     }
-    console.log(TAG, `hasStorageValue success result is ${result}`);
+    console.info(TAG, `hasStorageValue success result is ${result}`);
     return result;
   }
 
@@ -69,9 +69,9 @@ export class StorageManager {
     try {
       getValue = await storage.get(key, false);
     } catch (err) {
-      console.log(`getStorageValue failed, code is ${err?.code}, message is ${err?.message}`);
+      console.error(`getStorageValue failed, code is ${err?.code}, message is ${err?.message}`);
     }
-    console.log(TAG, `getStorageValue success`);
+    console.info(TAG, `getStorageValue success`);
     return getValue;
   }
 
@@ -81,9 +81,9 @@ export class StorageManager {
       await storage.delete(key);
       await storage.flush();
     } catch (err) {
-      console.log(`deleteStorageValue failed, code is ${err?.code}, message is ${err?.message}`);
+      console.error(`deleteStorageValue failed, code is ${err?.code}, message is ${err?.message}`);
     }
-    console.log(TAG, `delete success`);
+    console.info(TAG, `delete success`);
     return
   }
 
