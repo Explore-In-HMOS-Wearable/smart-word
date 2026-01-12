@@ -14,7 +14,7 @@ export class NotificationService {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT, // Basic notification
         normal: {
           title: 'SmartWord',
-          text: 'Don\'t forget to repeat today\'s words',
+          text: 'Don\'t forget to repeat today\'s words'
         }
       }
     };
@@ -62,12 +62,12 @@ export class NotificationService {
           notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
           normal: {
             title: 'SmartWord',
-            text: 'Your 5 words for today are ready!',
-          },
+            text: 'Your 5 words for today are ready!'
+          }
         },
         id: 6,
         wantAgent: data,
-        actionButtons: [actionButton],
+        actionButtons: [actionButton]
       }
 
       notificationManager.publish(notificationRequest, (err: BusinessError) => {

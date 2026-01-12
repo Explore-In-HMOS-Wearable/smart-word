@@ -3,7 +3,6 @@ import { StorageManager } from '../model/StorageManager';
 import { common } from '@kit.AbilityKit';
 import { MainViewModel } from '../viewmodel/MainViewModel';
 import { DayModel } from '../model/DayModel';
-import { RouterUtil } from '../utils/RouterUtil';
 import { NotificationService } from '../service/NotificationService';
 import {
   DAY_IDX_KEY,
@@ -13,15 +12,17 @@ import {
   IS_SEND_NOTIF_KEY,
   NOTIFICATION_URL
 } from '../utils/Constants';
+import { NavigationService } from '../service/NavigationService';
 
 @Entry
 @Component
-struct HomePage {
+export struct HomePage {
   private storageManager: StorageManager = new StorageManager()
   private viewModel: MainViewModel = new MainViewModel();
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State vocabList: DayModel[] = this.viewModel.getVocabData()
   @State enabledIndex: number = 0
+  navigationService: NavigationService = NavigationService.getInstance();
 
   async onPageShow(): Promise<void> {
     let enabledIndexFromStorage =
@@ -50,9 +51,6 @@ struct HomePage {
           .fontSize(20)
           .fontColor(Color.White)
           .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-
-          })
       }
       .margin({ bottom: 16 })
 
@@ -61,7 +59,8 @@ struct HomePage {
           Row() {
             Text(vocabDay.label)
           }
-          .backgroundColor((this.enabledIndex >= index) ? $r('app.color.enabled_day_background') : $r('app.color.disabled_day_background'))
+          .backgroundColor((this.enabledIndex >= index) ? $r('app.color.enabled_day_background') :
+          $r('app.color.disabled_day_background'))
           .width('90%')
           .height('90px')
           .justifyContent(FlexAlign.Center)
@@ -69,13 +68,14 @@ struct HomePage {
           .padding(10)
           .enabled((this.enabledIndex >= index) ? true : false)
           .onClick(() => {
-            RouterUtil.navigateToWordsPage(vocabDay.vocabList)
+            this.navigationService.pageInfos.pushPath({ name: 'WordsPage', param: vocabDay.vocabList })
           })
         }
         .width('100%')
         .margin({ bottom: 8 })
 
-      }, (word: string) => word)
+      }, (item: string, index: number) => item
+      )
     }
     .height('100%')
     .width('100%')

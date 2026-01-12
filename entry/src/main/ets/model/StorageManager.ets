@@ -10,7 +10,7 @@ export class StorageManager {
 
   async getFromStorage(context: common.Context, url: string) {
     let name = url;
-    console.info(TAG, 'Name is ${name}');
+    console.info(TAG, `Name is ${name}`);
     try {
       storage = await preferences.getPreferences(context, `${name}`);
     } catch (err) {

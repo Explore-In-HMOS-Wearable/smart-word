@@ -2,7 +2,6 @@ import { ArcSwiper, ArcSwiperAttribute } from '@kit.ArkUI'
 import { StorageManager } from '../model/StorageManager';
 import { VocabModel } from '../model/VocabModel';
 import { common } from '@kit.AbilityKit';
-import { RouterUtil } from '../utils/RouterUtil';
 import { NotificationService } from '../service/NotificationService';
 import {
   DAY_IDX_KEY,
@@ -12,18 +11,19 @@ import {
   IS_SEND_NOTIF_KEY,
   NOTIFICATION_URL
 } from '../utils/Constants';
+import { NavigationService } from '../service/NavigationService';
 
 @Entry
 @Component
-struct WordsPage {
+export struct WordsPage {
   private storageManager: StorageManager = new StorageManager()
   @State vocabList: VocabModel[] = []
   @State isBlur: boolean = true
-  @State flagIdx: number = 0
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  navigationService: NavigationService = NavigationService.getInstance();
 
   aboutToAppear(): void {
-    this.vocabList = RouterUtil.getParams() as VocabModel[]
+    this.vocabList = this.navigationService.pageInfos.getParamByName('WordsPage')[0] as VocabModel[]
   }
 
   build() {
@@ -38,7 +38,7 @@ struct WordsPage {
               .margin(8)
               .padding(10)
               .borderRadius(35)
-              .foregroundBlurStyle((this.isBlur == true) ? BlurStyle.Thick : BlurStyle.NONE, {
+              .foregroundBlurStyle((this.isBlur === true) ? BlurStyle.Thick : BlurStyle.NONE, {
                 colorMode: ThemeColorMode.LIGHT,
                 adaptiveColor: AdaptiveColor.DEFAULT,
                 scale: 0.1
@@ -57,7 +57,7 @@ struct WordsPage {
           Button($r('app.string.no_continue'))
             .onClick(async () => {
               NotificationService.triggerSimpleNotification()
-              RouterUtil.back()
+              this.navigationService.pageInfos.pop()
             })
             .margin({ top: 8 })
           Button($r('app.string.next_day'))
@@ -72,7 +72,7 @@ struct WordsPage {
               await this.storageManager.putStorageValueBoolean(this.context, IS_SEND_NOTIF_KEY, false,
                 NOTIFICATION_URL);
 
-              RouterUtil.back()
+              this.navigationService.pageInfos.pop()
             })
             .margin({ top: 6 })
 
@@ -91,7 +91,7 @@ struct WordsPage {
         .height(30)
         .margin({ top: 10 })
         .onClick(() => {
-          RouterUtil.back()
+          this.navigationService.pageInfos.pop()
         })
     }.alignContent(Alignment.Top)
     .width('100%')

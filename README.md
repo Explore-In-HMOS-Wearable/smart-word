@@ -6,11 +6,12 @@ Smart Word is a minimalist daily vocabulary suggestion app built with ArkTS and 
 ---
 
 # Preview
+
 <div>
-	<img src="./screenshots/1.png" width="24%" />
-	<img src="./screenshots/2.png" width="24%" />
-	<img src="./screenshots/3.png" width="24%" />
-	<img src="./screenshots/4.png" width="24%" />
+<img src="./screenshots/1.png" width="24%" />
+<img src="./screenshots/2.png" width="24%" />
+<img src="./screenshots/3.png" width="24%" />
+<img src="./screenshots/4.png" width="24%" />
 </div>
 
 ---
@@ -43,7 +44,7 @@ Smart Word is a minimalist daily vocabulary suggestion app built with ArkTS and 
     
  ---
 
-# Project Directory
+# Directory Structure
 ```
 |---model
 |   |---DayModel.ets           # Represents day change and date tracking
@@ -79,7 +80,7 @@ Smart Word is a minimalist daily vocabulary suggestion app built with ArkTS and 
 ---
 
 
-# Licence
+# LICENSE
 
 SmartWord is distributed under the terms of the MIT License
 See the [LICENSE](./LICENSE) for more information.

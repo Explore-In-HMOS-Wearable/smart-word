@@ -5,8 +5,7 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "wearable",
-      "phone"
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

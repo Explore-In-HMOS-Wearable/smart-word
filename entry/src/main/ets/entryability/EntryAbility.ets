@@ -17,12 +17,12 @@ export default class EntryAbility extends UIAbility {
 
     let context2 = this.context as common.UIAbilityContext;
     notificationManager.isNotificationEnabled().then((data: boolean) => {
-      hilog.info(DOMAIN_NUMBER, TAG, 'isNotificationEnabled success, data: ' + JSON.stringify(data));
+      hilog.info(DOMAIN_NUMBER, TAG, `isNotificationEnabled success, data: ${JSON.stringify(data)}`);
       if (!data) {
         notificationManager.requestEnableNotification(context2).then(() => {
           hilog.info(DOMAIN_NUMBER, TAG, `[ANS] requestEnableNotification success`);
         }).catch((err: BusinessError) => {
-          if (1600004 == err.code) {
+          if (1600004 === err.code) {
             hilog.error(DOMAIN_NUMBER, TAG,
               `[ANS] requestEnableNotification refused, code is ${err.code}, message is ${err.message}`);
           } else {
